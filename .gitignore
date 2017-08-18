@@ -7,3 +7,9 @@ merge-results.html
 build
 dist
 MANIFEST
+
+# IDEA FILES
+.idea
+
+# VIRTUAL ENV
+venv
