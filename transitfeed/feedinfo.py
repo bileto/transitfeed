@@ -22,7 +22,7 @@ class FeedInfo(transitfeed.GtfsObjectBase):
   _REQUIRED_FIELD_NAMES = ["feed_publisher_name", "feed_publisher_url",
                            "feed_lang"]
   _FIELD_NAMES = _REQUIRED_FIELD_NAMES + ["feed_start_date", "feed_end_date",
-                                          "feed_version"]
+                                          "feed_version", 'script_version']
   _DEPRECATED_FIELD_NAMES = [('feed_valid_from', 'feed_start_date'),
                              ('feed_valid_until', 'feed_end_date'),
                              ('feed_timezone', None)]

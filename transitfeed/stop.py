@@ -39,7 +39,9 @@ class Stop(GtfsObjectBase):
   _FIELD_NAMES = _REQUIRED_FIELD_NAMES + \
                  ['stop_desc', 'zone_id', 'stop_url', 'stop_code',
                   'location_type', 'parent_station', 'stop_timezone',
-                  'wheelchair_boarding']
+                  'wheelchair_boarding', 'stop_country', 'stop_country_code',
+                  'stop_city', 'stop_admin_level1', 'stop_admin_level2',
+                  'stop_admin_level3', 'border', 'platform_code']
   _TABLE_NAME = 'stops'
 
   LOCATION_TYPE_STATION = 1

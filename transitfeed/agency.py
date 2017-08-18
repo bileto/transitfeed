@@ -30,7 +30,8 @@ class Agency(GtfsObjectBase):
   """
   _REQUIRED_FIELD_NAMES = ['agency_name', 'agency_url', 'agency_timezone']
   _FIELD_NAMES = _REQUIRED_FIELD_NAMES + ['agency_id', 'agency_lang',
-                                          'agency_phone', 'agency_fare_url', 'agency_email']
+                                          'agency_phone', 'agency_fare_url', 'agency_email',
+                                          'agency_address']
   _DEPRECATED_FIELD_NAMES = [('agency_ticket_url','agency_fare_url')]
   _TABLE_NAME = 'agency'
 
