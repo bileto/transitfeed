@@ -84,5 +84,6 @@ from stop import *
 from stoptime import *
 from transfer import *
 from trip import *
+from stopexternalids import *
 
 from transitfeed.version import __version__

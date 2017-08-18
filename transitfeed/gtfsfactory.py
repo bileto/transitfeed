@@ -30,6 +30,7 @@ from stop import Stop
 from stoptime import StopTime
 from transfer import Transfer
 from trip import Trip
+from stopexternalids import StopExternalIds
 
 class GtfsFactory(object):
   """A factory for the default GTFS objects"""
@@ -53,7 +54,8 @@ class GtfsFactory(object):
       'Transfer': Transfer,
       'Trip': Trip,
       'Schedule': Schedule,
-      'Loader': Loader
+      'Loader': Loader,
+      'StopExternalIds': StopExternalIds
     }
 
     self._file_mapping = {
@@ -95,6 +97,9 @@ class GtfsFactory(object):
 
         'trips.txt': { 'required': True, 'loading_order': 40,
                        'classes': ['Trip']},
+
+        'stop_external_ids.txt': {'required': True, 'loading_order': None,
+                      'classes': ['StopExternalIds']},
 
         }
 
