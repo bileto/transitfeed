@@ -5,6 +5,7 @@ Forked from google/transitfeed
 ### Changed
 - increased limit of error to 500
 - distance validation (distance=previous_distance)
+- turned off parent stations timezone checking
 
 **
 

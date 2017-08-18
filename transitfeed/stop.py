@@ -227,11 +227,11 @@ class Stop(GtfsObjectBase):
     # Entrances or other child stops (having a parent station) must not have a
     # stop_timezone.
     util.ValidateTimezone(self.stop_timezone, 'stop_timezone', problems)
-    if (not util.IsEmpty(self.parent_station) and
-        not util.IsEmpty(self.stop_timezone)):
-      problems.InvalidValue('stop_timezone', self.stop_timezone,
-          reason='a stop having a parent stop must not have a stop_timezone',
-          type=problems_module.TYPE_WARNING)
+    # if (not util.IsEmpty(self.parent_station) and
+    #     not util.IsEmpty(self.stop_timezone)):
+    #   problems.InvalidValue('stop_timezone', self.stop_timezone,
+    #       reason='a stop having a parent stop must not have a stop_timezone',
+    #       type=problems_module.TYPE_WARNING)
 
   def ValidateWheelchairBoarding(self, problems):
     if self.wheelchair_boarding:
