@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/bileto/transitfeed/tree/bileto.svg?style=svg)](https://circleci.com/gh/bileto/transitfeed/tree/bileto)
+
 # transitfeed
 
 ### Adjusted for Bileto GTFS specification
