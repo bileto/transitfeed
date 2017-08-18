@@ -10,10 +10,13 @@ MANIFEST
 
 # IDEA FILES
 .idea
+!/.idea/runConfigurations/RunTests.xml
+!/.idea/runConfigurations/RunFeedValidator_Bad.xml
+!/.idea/runConfigurations/RunFeedValidator_Good.xml
 
 # VIRTUAL ENV
 venv
-!/.idea/runConfigurations/RunTests.xml
+
 
 # TESTS
 .cache
