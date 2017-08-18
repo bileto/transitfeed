@@ -13,3 +13,4 @@ MANIFEST
 
 # VIRTUAL ENV
 venv
+!/.idea/runConfigurations/RunTests.xml
