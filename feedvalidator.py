@@ -674,7 +674,7 @@ https://github.com/google/transitfeed/wiki/FeedValidator
 
   parser.set_defaults(manual_entry=True, output='validation-results.html',
                       memory_db=False, check_duplicate_trips=False,
-                      limit_per_type=5, latest_version='',
+                      limit_per_type=500, latest_version='',
                       service_gap_interval=13)
   (options, args) = parser.parse_args()
 

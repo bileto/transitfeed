@@ -2,6 +2,8 @@
 Forked from google/transitfeed
 ### Added
 - stop_external_ids.txt as recognizable file
+### Changed
+- increased limit of error to 500
 
 **
 
