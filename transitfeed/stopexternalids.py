@@ -1,7 +1,7 @@
-import transitfeed
-import problems as problems_module
+import util
+from gtfsobjectbase import GtfsObjectBase
 
-class StopExternalIds(transitfeed.GtfsObjectBase):
+class StopExternalIds(GtfsObjectBase):
     """Model and validation for stop_external_ids.txt."""
 
     _REQUIRED_FIELD_NAMES = ["stop_id", "type", "id"]
@@ -9,32 +9,41 @@ class StopExternalIds(transitfeed.GtfsObjectBase):
     _DEPRECATED_FIELD_NAMES = []
     _TABLE_NAME = 'stop_external_ids'
 
-    def __init__(self, field_dict=None):
+    def __init__(self, stop_id=None, type=None, id=None, field_dict=None, **kwargs):
         self._schedule = None
-        if field_dict:
-            self.__dict__.update(field_dict)
+        if not field_dict:
+            if stop_id:
+                kwargs['stop_id'] = stop_id
+            if id:
+                kwargs['id'] = id
+            if type:
+                kwargs['type'] = type
+            field_dict = kwargs
+        self.__dict__.update(field_dict)
 
-    # def ValidateStopExternalIdsStopId(self, problems):
-    #     return not transitfeed.ValidateLanguageCode(self.stop_id, 'stop_id', problems)
+    def ValidateStopExternalIdsMissingId(self, problems):
+        if not self.id:
+            problems.MissingValue('id')
+        if self.id is not None:
+            value = self.id
+            try:
+                if not isinstance(value, int):
+                    self.id = util.FloatStringToFloat(value, problems)
+            except (ValueError, TypeError):
+                problems.InvalidValue('id', value)
+                del self.id
 
-    # def ValidateStopExternalIdsType(self, problems):
-    #     return not transitfeed.ValidateURL(self.type, 'type', problems)
-
-    def ValidateStopExternalIdsId(self, problems):
-        return not transitfeed.MissingValue(self.type, 'type', problems)
+    def Validate(self, problems):
+        found_problem = False
+        found_problem = ((not util.ValidateRequiredFieldsAreNotEmpty(
+                        self, self._REQUIRED_FIELD_NAMES, problems))
+                         or found_problem)
+        found_problem = self.ValidateStopExternalIdsMissingId(problems) or found_problem
+        return not found_problem
 
     def ValidateBeforeAdd(self, problems):
-        transitfeed.ValidateRequiredFieldsAreNotEmpty(self,
-                                                      self._REQUIRED_FIELD_NAMES,
-                                                      problems)
-        # self.ValidateStopExternalIdsStopId(problems)
-        # self.ValidateStopExternalIdsType(problems)
-        # self.ValidateStopExternalIdsId(problems)
-        return True  # none of the above validations is blocking
+        return True
 
     def ValidateAfterAdd(self, problems):
-        return
+        self.Validate(problems)
 
-    def Validate(self, problems=problems_module.default_problem_reporter):
-        self.ValidateBeforeAdd(problems)
-        self.ValidateAfterAdd(problems)
